@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Contact Form</title>
+</head>
+
+<body>
+  <div class="container">
+    <form id="form" class="form" method="POST">
+      <h2>Contact Us</h2>
+      <div class="form-control">
+        <label for="firstname">First Name</label>
+        <input type="text" id="firstname" name="firstname" placeholder="Enter First Name" />
+        <small>Error message</small>
+      </div>
+      <div class="form-control">
+        <label for="lastname"> Last Name</label>
+        <input type="text" id="lastname" name="lastname" placeholder="Enter Last Name" />
+        <small>Error message</small>
+      </div>
+      <div class="form-control">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter email" />
+        <small>Error message</small>
+      </div>
+      <div class="form-control">
+        <label for="emailconfirm">Confirm Email</label>
+        <input type="email" id="emailconfirm" placeholder="Confirm Email" name="confmail" autocomplete="off" />
+        <small>Error message</small>
+      </div>
+      <div class="form-control">
+        <label for="message">Your Message</label>
+        <textarea name="message" id="message" cols="43" rows="5" placeholder="Your message"></textarea>
+        <small>Error Message</small>
+      </div>
+
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
