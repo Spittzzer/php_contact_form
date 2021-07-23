@@ -1,5 +1,5 @@
 <?php
- if(isset($_POST["email"]) && !empty($_POST["email"])&&isset($_POST["confmail"])&& !empty($_POST["confmail"])){
+ if(isset($_POST["email"]) && !empty($_POST["email"])&&isset($_POST["confmail"])&& !empty($_POST["confmail"])&&isset($_POST["message"])&&!empty($_POST["message"])){
     $to = 'billaoun@gmail.com';
 	$first= $_POST['firstname'];
 	$last = $_POST['lastname'];
@@ -21,7 +21,7 @@
 
 
 	
-	
+
 };
     
     
