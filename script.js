@@ -63,7 +63,9 @@ function checkLength(input, min, max) {
 function checkEMailsMatch(input1, input2) {
   if (input1.value !== input2.value) {
     showError(input2, "email adresses don't match");
+    return false;
   }
+  return true;
 }
 
 // Get fieldname
@@ -74,35 +76,34 @@ function getFieldName(input) {
 // Event listeners
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-
-  checkRequired([firstName, lastName, email, emailTwo, message]);
-  checkLength(firstName, 3, 15);
-  checkLength(lastName, 3, 15);
-  checkEmail(email);
-  checkEMailsMatch(email, emailTwo);
-
-  fetch("message.php", {
-    method: "POST",
-    body: new FormData(form),
-    mode: "no-cors",
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-      button.innerHTML = "Message Sent";
-      button.style.backgroundColor = "green";
-
-      setTimeout(function () {
-        button.innerHTML = "Submit";
-        button.style.backgroundColor = "#3498db";
-        firstName.value = "";
-        lastName.value = "";
-        email.value = "";
-        emailTwo.value = "";
-        message.value = "";
-      }, 3000);
+  if (checkEMailsMatch(email, emailTwo)) {
+    checkRequired([firstName, lastName, email, emailTwo, message]);
+    checkLength(firstName, 3, 15);
+    checkLength(lastName, 3, 15);
+    checkEmail(email);
+    fetch("message.php", {
+      method: "POST",
+      body: new FormData(form),
+      mode: "no-cors",
     })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        button.innerHTML = "Message Sent";
+        button.style.backgroundColor = "green";
+
+        setTimeout(function () {
+          button.innerHTML = "Submit";
+          button.style.backgroundColor = "#3498db";
+          firstName.value = "";
+          lastName.value = "";
+          email.value = "";
+          emailTwo.value = "";
+          message.value = "";
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
 });
